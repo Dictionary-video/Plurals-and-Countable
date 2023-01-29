@@ -57,7 +57,14 @@ The look-up of air returns
 Believe it or not, air can be countable when it refers to an artificial way of acting, e.g. *put on airs*. So the plural list contains both air and airs. Countable is either, which means it can be countable or uncountable depending on word meanings.
 
 # When strict_level is forced
-Plurals-and-Countable does not verify the passed parameter is a noun. When it is not a noun, dictionary look-up is very likely to return nothing. But you can always use strict_level = forced to force an output. The library uses inflect to return a value. We do not know what is the proper base or whether it's countable or not when inflect is triggered.
+Plurals-and-Countable does not verify the passed parameter is a noun. When it is not a noun, a dictionary look-up is very likely to return nothing. But you can always use strict_level = forced to force an output. The library uses *inflect* to return a value. We do not know what is the proper base or whether it's countable or not when *inflect* is triggered.
+If you call the library by passing on *enjoy*, which is not a noun, with strict_level is forced. This is what you will get.
+```
+    'query': 'enjoy', 
+    'plural': ['enjoys'], 
+    'countable': 'unknown'
+```
+Our goal is that our library covers nearly all known nouns so that you'll never need to use forced.
 
 # Sanity test
 Along with the source code, a sanity test suite is provided for most irregular nouns. You may run the sanity test by
@@ -72,13 +79,13 @@ It takes time to look up a dictionary every time, and the library also limits th
 It is recommended that you implement some local cache mechanism or put the results in a database for future look-up.
 
 # Alternative REST API call
-For better performance, [Dictionary.video](https://dictionary.video) provides a REST API you can call. You'll need to contact us at admin@dictionary.video to get a API key.
+For better performance, [Dictionary.video](https://dictionary.video) provides a REST API you can call. You'll need to contact us at admin@dictionary.video to get an API key.
 ```
-curl https://dictionary.video/dvapi/noun/plurals/octopus?key=REPLACE_WITH_YOUR_KEY
+curl https://dictionary.video/api/noun/plurals/octopus?key=REPLACE_WITH_YOUR_KEY
 ```
 Like Plurals-and-Countable, the API call returns a dictionary containing query, base and a list of plurals.
 
-There are some corner cases when look-up fails, returns by API might have manual fixes contributed by our editors.
+There are some corner cases when automatic look-ups fail. REST API might have manual fixes of those corner cases by our editors.
 
 # LICENSE
 Plurals-and-Countable by [Dictionary.video](https://dictionary.video) is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. Please follow the license requirement to acknowledge [Dictionary.video-about](https://dictionary.video/about.html) in any proper manner.
