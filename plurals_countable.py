@@ -492,6 +492,7 @@ def pluc_lookup_plurals(noun:str, strict_level:str = 'dictionary'):
         return inflect_lookup()
 
 def main():
+    '''for testing'''
     sanity_test_all()
     rslt = pluc_lookup_plurals('woman', strict_level='dictionary')
     print(rslt)
